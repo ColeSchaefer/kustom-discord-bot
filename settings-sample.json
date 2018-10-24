@@ -1,0 +1,10 @@
+{
+    "bot_token": "BOT_TOKEN_HERE",
+    "invite_url": "https://discord.gg/szn9R98",
+    "prefix": ".",
+    
+    "featured_package": {
+        "search_tag": "klwp",
+        "search_count": 50
+    }
+}
