@@ -1,4 +1,5 @@
 const settings = require('../../settings.json');
+const strings = require('../strings.js');
 
 let Command = {
     Name: 'set',
@@ -15,25 +16,22 @@ let Command = {
         switch (argv[1]) {
             case 'name':
 				bot.user.setUsername(args);
-				message.channel.send(message.guild.member(message.author) + ' → Name set to: *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_NAME") + ' *' + args + '*');
 				break;
 			case 'game':
 				bot.user.setActivity(args);
-				message.channel.send(message.guild.member(message.author) + ' → Game set to: *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_GAME") + ' *' + args + '*');
 				break;
 			case 'status':
 				bot.user.setStatus(args);
-				message.channel.send(message.guild.member(message.author) + ' → Status set to: *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_STATUS") + ' *' + args + '*');
 				break;
 			case 'nick':
 				message.guild.members.get(bot.user.id).setNickname(args);
-				message.channel.send(message.guild.member(message.author) + ' → Nickname set to: *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_NICK") + ' *' + args + '*');
 				break;
 			default:
-				message.channel.send(
-				    message.guild.member(message.author) + ' → Invalid property provided. ' + 
-				    'Allowed properties: [*name*, *game*, *status*, *nick*]'
-				);
+				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_INVALID"));
 			    return;
         }
     }

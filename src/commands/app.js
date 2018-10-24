@@ -1,4 +1,5 @@
 const settings = require('../../settings.json');
+const strings = require('../strings.js');
 const fetch = require('node-fetch');
 
 let Command = {
@@ -20,15 +21,15 @@ let Command = {
                     author: { name: entry.title },
                     thumbnail: { url: entry.icon },
                     fields: [{
-                            name: 'Play Store Link',
+                            name: strings.GetString(settings.language, "APP_PLAYSTORE_LINK"),
                             value: entryUrl,
                             inline: false
                         }, {
-                            name: 'Author',
+                            name: strings.GetString(settings.language, "APP_AUTHOR"),
                             value: entry.developer,
                             inline: false
                         }, {
-                            name: 'Description',
+                            name: strings.GetString(settings.language, "APP_DESCRIPTION"),
                             value: entryDesc,
                             inline: false
                         }],

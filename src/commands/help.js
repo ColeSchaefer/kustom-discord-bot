@@ -1,4 +1,5 @@
 const settings = require('../../settings.json');
+const strings = require('../strings');
 const fs = require('fs');
 
 let Command = {
@@ -7,26 +8,37 @@ let Command = {
     RequiredArguments: [],
     commandCallback: function(message, bot) {
         let commandArray = [];
-        fs.readdirSync('./src/commands/').forEach((module) => {
-    	    let moduleReq = require('./'.concat(module));
-	    	let field = {
-                name: settings.prefix + moduleReq.Name,
-                value: moduleReq.Description,
-                inline: false
+        fs.readdir('./src/commands/', (err, files) => {
+            if (err) throw (err);
+            
+            files.forEach((module) => {
+			    let modulePath = './src/commands/'.concat(module);
+			    let isModule = !fs.statSync(modulePath).isDirectory();
+			    if (isModule) {
+			        let moduleReq = require('./'.concat(module));
+            	    let argParam = moduleReq.RequiredArguments.length > 0 ? ' *<' + moduleReq.RequiredArguments.join(', ').trim() + '>*' : '';
+        	    	let field = {
+                        name: '' + settings.prefix + moduleReq.Name + argParam,
+                        value: moduleReq.Description,
+                        inline: false
+                    };
+                    commandArray.push(field);
+			    }
+            });
+            
+            let embed = {
+                author: { name: strings.GetString(settings.language, "HELP_COMMAND_LIST_TITLE") },
+                color: 0x7289D9,
+                fields: commandArray,
+                footer:
+                {
+                    icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
+                    text: settings.invite_url
+                },
             };
-            commandArray.push(field);
-    	});
-        let embed = {
-            author: { name: 'Kommand List' },
-            color: 0x7289D9,
-            fields: commandArray,
-            footer:
-            {
-                icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
-                text: settings.invite_url
-            },
-        };
- 		message.channel.send('Here is a list of my commands: ', { embed });
+            
+     		message.channel.send(strings.GetString(settings.language, "HELP_COMMAND_LIST_MESSAGE") + ' ', { embed });
+        });
     }
 };
 module.exports = Command;

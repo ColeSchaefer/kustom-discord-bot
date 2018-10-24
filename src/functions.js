@@ -1,11 +1,12 @@
 const settings = require('../settings.json');
 const fetch = require('node-fetch');
 const pickRandom = require('pick-random');
+const strings = require('../src/strings');
 
 module.exports = {
     SendWelcome: function(member, bot) {
         let embed = {
-            author: { name: 'Welcome to the Kustom Discord!' },
+            author: { name: strings.GetString(settings.language, "WELCOME_MESSAGE") },
             color: 0x7289D9,
             fields: [ 
                 {
@@ -31,7 +32,7 @@ module.exports = {
                 text: settings.invite_url
             },
         };
- 		bot.channels.get('461292043243618335').send({embed});
+ 		bot.channels.get('461292043243618335').send({ embed });
     },
     PostRandomFeaturedPackage: function(tag, bot) {
         let apiUri = 'https://api.cschaefer.me/playstore/search/'.concat(tag).concat('/' + settings.featured_package.search_count);
@@ -71,7 +72,7 @@ module.exports = {
                     },
                     timestamp: new Date()
                 };
-                bot.channels.get('461292043243618335').send({embed});
+                bot.channels.get('461292043243618335').send({ embed });
             });
         });
     },

@@ -26,30 +26,34 @@ bot.on('message', async (message) => {
     // Split our message into an argument array
 	var argv = message.content.substring(settings.prefix.length).split(' ');
 	
-	// Read list of all modules
-	fs.readdirSync('./src/commands/').forEach((module) => {
-	    let moduleReq = require('./src/commands/'.concat(module));
-	    
-	    // If the current module in the loop has a command name matching the user input, continue..
-	    if (moduleReq.Name == argv[0]) {
-	    	// If the required number of arguments is met, continue..
-	    	if ((argv.length - 1) >= moduleReq.RequiredArguments.length) {
-	    		
-	    		// Execute the module commandCallback();
-	    		moduleReq.commandCallback(message, bot);
-	    		
-	    	// The number of arguments was not met. Display required arguments for user.
-	    	} else {
-	    		let usageDesc = '';
-	    		for (let i = 0; i < moduleReq.RequiredArguments.length; i++)
-	    			usageDesc += '<' + moduleReq.RequiredArguments[i] + '> ';
-	    		let embed = {
-	    			color: 0x7289D9,
-		            description: (settings.prefix + moduleReq.Name).concat(' *' + usageDesc.trim() + '*')
-		        };
-	    		message.channel.send('Usage:', { embed });
-	    	} // </if(moduleReq.ReqLength)>
-	    } // </if(moduleReq.Name)>
+	fs.readdir('./src/commands/', (err, files) => {
+		if (err) throw (err);
+		
+		files.forEach((module) => {
+			let modulePath = './src/commands/'.concat(module);
+			let isModule = !fs.statSync(modulePath).isDirectory();
+			if (isModule) {
+			    let moduleReq = require(modulePath);
+			    // If the current module in the loop has a command name matching the user input, continue..
+			    if (moduleReq.Name == argv[0]) {
+			    	// If the required number of arguments is met, continue..
+			    	if ((argv.length - 1) >= moduleReq.RequiredArguments.length) {
+			    		// Execute the module commandCallback();
+			    		moduleReq.commandCallback(message, bot);
+			    	// The number of arguments was not met. Display required arguments for user.
+			    	} else {
+			    		let usageDesc = '';
+			    		for (let i = 0; i < moduleReq.RequiredArguments.length; i++)
+			    			usageDesc += '<' + moduleReq.RequiredArguments[i] + '> ';
+			    		let embed = {
+			    			color: 0x7289D9,
+				            description: (settings.prefix + moduleReq.Name).concat(' *' + usageDesc.trim() + '*')
+				        };
+			    		message.channel.send('Usage:', { embed });
+			    	}
+			    }
+			}
+		});
 	});
 	
 });
