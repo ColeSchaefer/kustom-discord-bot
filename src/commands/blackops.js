@@ -25,10 +25,10 @@ let Command = {
                     let fields = [];
                     let userName = data.user.username;
                     let generalLabels = [
-                        'Level',
-                        'Prestige',
-                        'Kills',
-                        'Deaths'
+                        '**Level:**',
+                        '**Prestige:**',
+                        '**Kills:**',
+                        '**Deaths:**'
                     ];
                     let generalKeys = [
                         'level',
@@ -40,16 +40,16 @@ let Command = {
                     generalKeys.forEach((key, index, array) => {
                         let fieldName = generalLabels[index];
                         let fieldData = data.stats[key];
-                        let field = fieldName + ': ' + fieldData;
+                        let field = fieldName + ' ' + fieldData;
                         generalString += field + "\n";
                     });
-                    generalString += 'K/D: ' + parseFloat(data.stats['kills']/data.stats['deaths']).toFixed(2);
+                    generalString += '**K/D:** ' + parseFloat(data.stats['kills']/data.stats['deaths']).toFixed(2);
                     
                     let matchLabels = [
-                        'Matches',
-                        'Wins',
-                        'Losses',
-                        'Time Played'
+                        '**Matches:**',
+                        '**Wins:**',
+                        '**Losses:**',
+                        '**Time Played:**'
                     ];
                     let matchKeys = [
                         'gamesplayed',
@@ -61,10 +61,21 @@ let Command = {
                     matchKeys.forEach((key, index, array) => {
                         let fieldName = matchLabels[index];
                         let fieldData = data.stats[key];
-                        let field = fieldName + ': ' + fieldData;
+                        if(key == 'timeplayed') {
+                            var sec_num = parseInt(fieldData, 10); // don't forget the second param
+                            var hours   = Math.floor(sec_num / 3600);
+                            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+                            var seconds = sec_num - (hours * 3600) - (minutes * 60);
+                        
+                            if (hours   < 10) {hours   = "0"+hours;}
+                            if (minutes < 10) {minutes = "0"+minutes;}
+                            if (seconds < 10) {seconds = "0"+seconds;}
+                            fieldData = hours+'h'+minutes+'m'+seconds+'s';
+                        }
+                        let field = fieldName + ' ' + fieldData;
                         matchString += field + "\n";
                     });
-                    matchString += 'Win %: ' + parseFloat(data.stats['wins']/data.stats['losses']).toFixed(2);
+                    matchString += '**Win %:** ' + parseFloat(data.stats['wins']/data.stats['losses']).toFixed(2);
                     
                     fields.push({
                         name: '**__General Stats__**',

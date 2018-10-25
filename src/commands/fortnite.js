@@ -59,6 +59,7 @@ let Command = {
                     });
                     
                     let embed = {
+                        color: 0xD9AD27,
                         thumbnail: { url: 'https://api.cschaefer.me/discord/misc/fnbr.png' },
                         author: { name: stats.epicUserHandle.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))},
                         fields: fields
