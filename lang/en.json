@@ -35,5 +35,5 @@
     "AUDIO_ADDED_TO_QUEUE": "Added to queue!",
     "AUDIO_STOPPED_TRACK": "Stopped playback!",
     "AUDIO_SKIPPED_TRACK": "Skipped track!",
-    "AUDIO_USER_VOICE_KICKED": "Successfully kicked "
+    "AUDIO_USER_VOICE_KICKED": "User was kicked from voice room."
 }

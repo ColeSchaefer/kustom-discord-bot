@@ -21,7 +21,7 @@ let Command = {
                 member.setVoiceChannel(channel).then((user) => {
                     channel.delete();
                     let memberUserName = message.guild.member(message.mentions.users.first()).user.username;
-                    message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "AUDIO_USER_VOICE_KICKED") + memberUserName);
+                    message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "AUDIO_USER_VOICE_KICKED"));
                 });
             });
         }
