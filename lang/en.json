@@ -29,5 +29,10 @@
     "USER_CANNOT_MUTE_SELF": "You cannot mute yourself.",
     "USER_CANNOT_MUTE_SAME_ROLE_OR_HIGHER": "You cannot mute a member of the same role or higher.",
     "USER_HAS_BEEN_MUTED": "User has been muted.",
-    "USER_HAS_BEEN_UNMUTED": "User has been unmuted."
+    "USER_HAS_BEEN_UNMUTED": "User has been unmuted.",
+    
+    "AUDIO_NOT_IN_VOICE_CHANNEL": "You must be in a voice channel to use this command.",
+    "AUDIO_ADDED_TO_QUEUE": "Added to queue!",
+    "AUDIO_STOPPED_TRACK": "Stopped playback!",
+    "AUDIO_SKIPPED_TRACK": "Skipped track!"
 }
