@@ -4,11 +4,11 @@ const Discord = require('discord.js');
 const colors = require('colors');
 const fs = require('fs');
 
-var bot = new Discord.Client();
+let bot = new Discord.Client();
 
 // Bot is ready!
 bot.on('ready', async (message) => { 
-    var link = await bot.generateInvite(['ADMINISTRATOR']);
+    let link = await bot.generateInvite(['ADMINISTRATOR']);
     console.log('\r\nBot User: '.cyan + '%s', bot.user.tag);
     console.log('Bot Link: '.cyan + '%s', link);
 });
@@ -24,7 +24,7 @@ bot.on('message', async (message) => {
 	if (message.author.bot) return;
     
     // Split our message into an argument array
-	var argv = message.content.substring(settings.prefix.length).split(' ');
+	let argv = message.content.substring(settings.prefix.length).split(' ');
 	
 	fs.readdir('./src/commands/', (err, files) => {
 		if (err) throw (err);

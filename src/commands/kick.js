@@ -4,9 +4,9 @@ const strings = require('../strings');
 let Command = {
     Name: 'kick',
     Description: 'Kick a user from the Discord server.',
-    RequiredArguments: ['userName'],
+    RequiredArguments: ['User Mention'],
     commandCallback: function(message, bot) {
-	    var argv = message.content.substring(settings.prefix.length).split(' ');
+	    let argv = message.content.substring(settings.prefix.length).split(' ');
         let userTo = message.mentions.users.first();
         
         if (argv[1] && userTo) {

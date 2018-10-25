@@ -4,14 +4,11 @@ const strings = require('../strings.js');
 let Command = {
     Name: 'set',
     Description: 'Adjust core bot settings (name, status, etc.)',
-    RequiredArguments: ['property', 'arguments'],
+    RequiredArguments: ['Property', 'Arguments'],
     commandCallback: function(message, bot) {
 	    var argv = message.content.substring(settings.prefix.length).split(' ');
         
-        var args = '';
-		for (var i = 2; i < argv.length; i++) {
-			args += argv[i] + ' ';
-		} args = args.trim();
+        var args = ''; for (var i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
         
         switch (argv[1]) {
             case 'name':

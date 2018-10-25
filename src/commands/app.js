@@ -5,9 +5,9 @@ const fetch = require('node-fetch');
 let Command = {
     Name: 'app',
     Description: 'Show a preview of a Google Play Store application.',
-    RequiredArguments: ['packageId'],
+    RequiredArguments: ['Package ID'],
     commandCallback: function(message, bot) {
-	    var argv = message.content.substring(settings.prefix.length).split(' ');
+	    let argv = message.content.substring(settings.prefix.length).split(' ');
         if (argv[1]) {
             let apiUri = 'https://api.cschaefer.me/playstore/app/'.concat(argv[1]);
             fetch(apiUri).then((res) => res.json()).then((entry) => {
