@@ -16,7 +16,7 @@ let Command = {
             if (platforms.indexOf(platform) > -1) {
                 let args = ''; for (let i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
                 let username; username = args;
-                let statsUrl = 'http://api.cschaefer.me/discord/tracker/blackops.php'.concat('?username=' + username).concat('&platform=' + platform);
+                let statsUrl = 'http://api.cschaefer.me/discord/tracker.php'.concat('?title=' + argv[0]).concat('&username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((data) => {
                     if (data.status == 'error') {
                         msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "BO4STATS_NOT_FOUND"));

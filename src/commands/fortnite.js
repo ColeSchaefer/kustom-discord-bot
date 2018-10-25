@@ -3,7 +3,7 @@ const strings = require('../strings');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'fortnite',
+    Name: 'fn',
     Description: 'Retrieve the Fortnite stats of any player.',
     RequiredArguments: ['Platform', 'Player Name'],
     commandCallback: function(message, bot) {
@@ -20,7 +20,7 @@ let Command = {
             if (platforms.indexOf(platform) > -1) {
                 let args = ''; for (let i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
                 let username; username = args;
-                let statsUrl = 'http://api.cschaefer.me/discord/tracker/fortnite.php'.concat('?username=' + username).concat('&platform=' + platform);
+                let statsUrl = 'http://api.cschaefer.me/discord/tracker.php'.concat('?title=' + argv[0]).concat('&username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((stats) => {
                     if (stats.error) {
                         msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "FNSTATS_NOT_FOUND"));
