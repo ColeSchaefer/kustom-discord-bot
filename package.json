@@ -13,8 +13,11 @@
     "discord.js": "^11.4.2",
     "fs": "0.0.1-security",
     "google-translate-api": "^2.3.0",
+    "node-fetch": "^2.2.0",
+    "node-opus": "^0.3.0",
     "pick-random": "^2.0.0",
     "request": "^2.88.0",
-    "url": "^0.11.0"
+    "url": "^0.11.0",
+    "ytdl-core": "^0.26.3"
   }
 }
