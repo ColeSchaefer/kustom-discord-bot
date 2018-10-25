@@ -1,19 +1,22 @@
 {
     "WELCOME_MESSAGE": "Welcome to the Kustom Discord!",
-    
     "USER_KICK_MESSAGE": "User kicked. Thank fuck.",
     "USER_BAN_MESSAGE": "User banned. Took you long enough.",
-    
     "HELP_COMMAND_LIST_MESSAGE": "Here is a list of my commands:",
     "HELP_COMMAND_LIST_TITLE": "Kommand List",
-    
     "PROPERTY_SET_NAME": "Name set to:",
     "PROPERTY_SET_GAME": "Name set to:",
     "PROPERTY_SET_NICK": "Nickname set to:",
     "PROPERTY_SET_STATUS": "Status set to:",
     "PROPERTY_INVALID": "Invalid property provided. Allowed properties: [*name*, *game*, *status*, *nick*]",
-    
     "APP_PLAYSTORE_LINK": "Play Store Link",
     "APP_AUTHOR": "Author",
-    "APP_DESCRIPTION": "Description"
+    "APP_DESCRIPTION": "Description",
+    "FNSTATS_TITLE": "'s All-time Stats",
+    "USER_ALREADY_MUTED": "User is already muted.",
+    "USER_ALREADY_UNMUTED": "User is not muted.",
+    "USER_CANNOT_MUTE_SELF": "You cannot mute yourself.",
+    "USER_CANNOT_MUTE_SAME_ROLE_OR_HIGHER": "You cannot mute a member of the same role or higher.",
+    "USER_HAS_BEEN_MUTED": "User has been muted.",
+    "USER_HAS_BEEN_UNMUTED": "User has been unmuted."
 }
