@@ -61,7 +61,7 @@ let Command = {
                     let embed = {
                         color: 0xD9AD27,
                         thumbnail: { url: 'https://api.cschaefer.me/discord/misc/fortnite.png' },
-                        author: { name: stats.epicUserHandle.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))},
+                        author: { name: stats.epicUserHandle + '\'s '.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))},
                         fields: fields,
                         footer: {
                             icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",

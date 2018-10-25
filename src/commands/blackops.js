@@ -91,7 +91,7 @@ let Command = {
                     let embed = {
                         thumbnail: { url: 'https://api.cschaefer.me/discord/bo4ranks/' + data.stats['level'] + '.png' },
                         color: 0xFF6E03,
-                        author: { name: userName.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))},
+                        author: { name: userName + '\'s '.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))},
                         fields: fields,
                         footer: {
                             icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",

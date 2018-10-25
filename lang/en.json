@@ -17,11 +17,11 @@
     "APP_AUTHOR": "Author",
     "APP_DESCRIPTION": "Description",
     
-    "FNSTATS_TITLE": "'s Fortnite Stats",
+    "FNSTATS_TITLE": "Fortnite Stats",
     "FNSTATS_NOT_FOUND": "Could not find player statistics.",
-    "BO4STATS_TITLE": "'s Call of Duty Stats",
+    "BO4STATS_TITLE": "Call of Duty Stats",
     "BO4STATS_NOT_FOUND": "Could not find player statistics.",
-    "BF1STATS_TITLE": "'s Battlefield 1 Stats",
+    "BF1STATS_TITLE": "Battlefield 1 Stats",
     "BF1STATS_NOT_FOUND": "Could not find player statistics.",
     
     "USER_ALREADY_MUTED": "User is already muted.",
