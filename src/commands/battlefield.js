@@ -16,7 +16,7 @@ let Command = {
             if (platforms.indexOf(platform) > -1) {
                 let args = ''; for (let i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
                 let username; username = args;
-                let statsUrl = 'http://api.cschaefer.me/discord/trn.bf1.php'.concat('?username=' + username).concat('&platform=' + platform);
+                let statsUrl = 'http://api.cschaefer.me/discord/tracker/battlefield.php'.concat('?username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((data) => {
                     if (!data.successful) {
                         msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "BF1STATS_NOT_FOUND"));

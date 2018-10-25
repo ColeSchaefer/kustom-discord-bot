@@ -4,6 +4,7 @@ const strings = require('../strings');
 const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 
+// TODO: These need to move to a global function to access in OTHER functions..
 let servers = {};
 let currentId = 0;
 let ytStream;

@@ -20,7 +20,7 @@ let Command = {
             if (platforms.indexOf(platform) > -1) {
                 let args = ''; for (let i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
                 let username; username = args;
-                let statsUrl = 'http://api.cschaefer.me/discord/trn.fnbr.php'.concat('?username=' + username).concat('&platform=' + platform);
+                let statsUrl = 'http://api.cschaefer.me/discord/tracker/fortnite.php'.concat('?username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((stats) => {
                     if (stats.error) {
                         msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "FNSTATS_NOT_FOUND"));
@@ -60,7 +60,7 @@ let Command = {
                     
                     let embed = {
                         color: 0xD9AD27,
-                        thumbnail: { url: 'https://api.cschaefer.me/discord/misc/fnbr.png' },
+                        thumbnail: { url: 'https://api.cschaefer.me/discord/misc/fortnite.png' },
                         author: { name: stats.epicUserHandle.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))},
                         fields: fields,
                         footer: {

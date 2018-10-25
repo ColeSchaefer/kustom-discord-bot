@@ -16,7 +16,7 @@ let Command = {
             if (platforms.indexOf(platform) > -1) {
                 let args = ''; for (let i = 2; i < argv.length; i++) { args += argv[i] + ' '; } args = args.trim();
                 let username; username = args;
-                let statsUrl = 'http://api.cschaefer.me/discord/trn.codbo4.php'.concat('?username=' + username).concat('&platform=' + platform);
+                let statsUrl = 'http://api.cschaefer.me/discord/tracker/blackops.php'.concat('?username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((data) => {
                     if (data.status == 'error') {
                         msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "BO4STATS_NOT_FOUND"));
@@ -89,7 +89,7 @@ let Command = {
                     });
                     
                     let embed = {
-                        thumbnail: { url: 'https://api.cschaefer.me/discord/misc/codbo4.png' },
+                        thumbnail: { url: 'https://api.cschaefer.me/discord/bo4ranks/' + data.stats['level'] + '.png' },
                         color: 0xFF6E03,
                         author: { name: userName.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))},
                         fields: fields,
