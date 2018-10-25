@@ -3,7 +3,7 @@ const settings = require('../../settings.json');
 let Command = {
     Name: 'clear',
     Description: 'Clear the current channel of X messages',
-    RequiredArguments: ['# to Clear'],
+    RequiredArguments: ['# Messages'],
     commandCallback: function(message, bot) {
 	    let argv = message.content.substring(settings.prefix.length).split(' ');
         async function purgeMessages(count) {			
