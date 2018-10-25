@@ -65,7 +65,11 @@ let Command = {
                         thumbnail: { url: data.result.rank.imageUrl.replace('[BB_PREFIX]', data.bbPrefix) },
                         color: 0xF17F1A,
                         author: { name: data.profile.displayName.concat(strings.GetString(settings.language, "BF1STATS_TITLE"))},
-                        fields: fields
+                        fields: fields,
+                        footer: {
+                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
+                            text: settings.invite_url },
+                        timestamp: new Date()
                     };
                     msg.edit({embed});
                 });

@@ -30,11 +30,10 @@ let Command = {
                 author: { name: strings.GetString(settings.language, "HELP_COMMAND_LIST_TITLE") },
                 color: 0x7289D9,
                 fields: commandArray,
-                footer:
-                {
+                footer: {
                     icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
-                    text: settings.invite_url
-                },
+                    text: settings.invite_url },
+                timestamp: new Date()
             };
             
      		message.channel.send(strings.GetString(settings.language, "HELP_COMMAND_LIST_MESSAGE") + ' ', { embed });

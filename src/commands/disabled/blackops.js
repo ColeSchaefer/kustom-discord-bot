@@ -92,7 +92,11 @@ let Command = {
                         thumbnail: { url: 'https://api.cschaefer.me/discord/misc/codbo4.png' },
                         color: 0xFF6E03,
                         author: { name: userName.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))},
-                        fields: fields
+                        fields: fields,
+                        footer: {
+                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
+                            text: settings.invite_url },
+                        timestamp: new Date()
                     };
                     msg.edit({embed});
                     
