@@ -59,13 +59,16 @@ let Command = {
                     });
                     
                     let embed = {
-                        color: 0xD9AD27,
+                        color: 0xF9CC40,
                         thumbnail: { url: 'https://api.cschaefer.me/discord/misc/fortnite.png' },
-                        author: { name: stats.epicUserHandle + '\'s '.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))},
+                        author: {
+                            name: stats.epicUserHandle + ' - '.concat(strings.GetString(settings.language, "FNSTATS_TITLE"))
+                        },
                         fields: fields,
                         footer: {
-                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
-                            text: settings.invite_url },
+                            text: settings.invite_url,
+                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png"
+                        },
                         timestamp: new Date()
                     };
                     msg.edit({embed});

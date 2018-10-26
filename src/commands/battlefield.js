@@ -46,7 +46,7 @@ let Command = {
                         '**Matches:** ' + totalMatches,
                         '**Wins:** ' + data.result.wins,
                         '**Losses:** ' + data.result.losses,
-                        '**Time Played:** ' + hours+'h'+minutes+'m'+seconds+'s'
+                        '**Time Played:** ' + hours+'h '+minutes+'m '+seconds+'s'
                     ];
                     let matchString = matchArr.join("\n");
                     
@@ -64,11 +64,15 @@ let Command = {
                     let embed = {
                         thumbnail: { url: data.result.rank.imageUrl.replace('[BB_PREFIX]', data.bbPrefix) },
                         color: 0xF17F1A,
-                        author: { name: data.profile.displayName + '\'s '.concat(strings.GetString(settings.language, "BF1STATS_TITLE"))},
+                        author: { 
+                            name: data.profile.displayName + ' - '.concat(strings.GetString(settings.language, "BF1STATS_TITLE"))
+                            
+                        },
                         fields: fields,
                         footer: {
-                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
-                            text: settings.invite_url },
+                            text: settings.invite_url,
+                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png"
+                        },
                         timestamp: new Date()
                     };
                     msg.edit({embed});

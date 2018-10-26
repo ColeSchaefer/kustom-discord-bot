@@ -43,7 +43,7 @@ let Command = {
                         let field = fieldName + ' ' + fieldData;
                         generalString += field + "\n";
                     });
-                    generalString += '**K/D:** ' + parseFloat(data.stats['kills']/data.stats['deaths']).toFixed(2);
+                    generalString += '**K/D:** ' + parseFloat(data.stats['kills'] / data.stats['deaths']).toFixed(2);
                     
                     let matchLabels = [
                         '**Matches:**',
@@ -67,15 +67,15 @@ let Command = {
                             var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
                             var seconds = sec_num - (hours * 3600) - (minutes * 60);
                         
-                            if (hours   < 10) {hours   = "0"+hours;}
-                            if (minutes < 10) {minutes = "0"+minutes;}
-                            if (seconds < 10) {seconds = "0"+seconds;}
-                            fieldData = hours+'h'+minutes+'m'+seconds+'s';
+                            if (hours   < 10) { hours   = "0"+ hours; }
+                            if (minutes < 10) { minutes = "0"+ minutes; }
+                            if (seconds < 10) { seconds = "0"+ seconds; }
+                            fieldData = hours + 'h ' + minutes + 'm ' + seconds + 's';
                         }
                         let field = fieldName + ' ' + fieldData;
                         matchString += field + "\n";
                     });
-                    matchString += '**Win %:** ' + parseFloat(data.stats['wins']/data.stats['losses']).toFixed(2);
+                    matchString += '**Win %:** ' + parseFloat(data.stats['wins'] / data.stats['losses']).toFixed(2);
                     
                     fields.push({
                         name: '**__General Stats__**',
@@ -89,13 +89,16 @@ let Command = {
                     });
                     
                     let embed = {
-                        thumbnail: { url: 'https://api.cschaefer.me/discord/bo4ranks/' + data.stats['level'] + '.png' },
+                        thumbnail: { url: 'https://api.cschaefer.me/discord/misc/codbo4.png' },
                         color: 0xFF6E03,
-                        author: { name: userName + '\'s '.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))},
+                        author: {
+                            name: userName + ' - '.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))
+                        },
                         fields: fields,
                         footer: {
-                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png",
-                            text: settings.invite_url },
+                            text: settings.invite_url,
+                            icon_url: "https://discordapp.com/assets/28174a34e77bb5e5310ced9f95cb480b.png"
+                        },
                         timestamp: new Date()
                     };
                     msg.edit({embed});

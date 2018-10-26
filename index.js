@@ -18,6 +18,10 @@ bot.on('guildMemberAdd', (member) => {
 	functions.SendWelcome(member, bot);
 });
 
+bot.on('messageReactionAdd', (reaction, user) => {
+	console.log(reaction);
+});
+
 // Message received!
 bot.on('message', async (message) => {
 	if (message.author.equals(bot.user)) return;
