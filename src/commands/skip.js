@@ -6,7 +6,7 @@ const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'skip',
+    Name: ['skip'],
     Description: 'Skip the currently playing track.',
     RequiredArguments: [],
     commandCallback: async function(message, bot) {

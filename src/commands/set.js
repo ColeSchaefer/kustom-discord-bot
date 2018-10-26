@@ -1,9 +1,10 @@
 const settings = require('../../settings.json');
 const strings = require('../strings.js');
+const util = require('util');
 
 let Command = {
-    Name: 'set',
-    Description: 'Adjust core bot settings (name, status, etc.)',
+    Name: ['set'],
+    Description: 'Adjust core bot settings (name, status, etc.).',
     RequiredArguments: ['Property', 'Arguments'],
     commandCallback: function(message, bot) {
 	    var argv = message.content.substring(settings.prefix.length).split(' ');
@@ -13,22 +14,22 @@ let Command = {
         switch (argv[1]) {
             case 'name':
 				bot.user.setUsername(args);
-				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_NAME") + ' *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "PROPERTY_SET_NAME"), '*' + args + '*'));
 				break;
 			case 'game':
 				bot.user.setActivity(args);
-				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_GAME") + ' *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "PROPERTY_SET_GAME"), '*' + args + '*'));
 				break;
 			case 'status':
 				bot.user.setStatus(args);
-				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_STATUS") + ' *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "PROPERTY_SET_STATUS"), '*' + args + '*'));
 				break;
 			case 'nick':
 				message.guild.members.get(bot.user.id).setNickname(args);
-				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_SET_NICK") + ' *' + args + '*');
+				message.channel.send(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "PROPERTY_SET_NICK"), '*' + args + '*'));
 				break;
 			default:
-				message.channel.send(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "PROPERTY_INVALID"));
+				message.channel.send(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "PROPERTY_INVALID"), '*name*, *game*, *status*, *nick*'));
 			    return;
         }
     }

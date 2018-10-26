@@ -2,7 +2,7 @@ const settings = require('../../settings.json');
 const strings = require('../strings');
 
 let Command = {
-    Name: 'unmute',
+    Name: ['unmute'],
     Description: 'Unmute a user in the Discord server.',
     RequiredArguments: ['User Mention'],
     commandCallback: async function(message, bot) {

@@ -3,7 +3,7 @@ const strings = require('../strings.js');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'app',
+    Name: ['app'],
     Description: 'Show a preview of a Google Play Store application.',
     RequiredArguments: ['Package ID'],
     commandCallback: function(message, bot) {
@@ -15,8 +15,7 @@ let Command = {
                 let entryUrl = 'https://play.google.com/store/apps/details?id='.concat(entry.appId);
                 let embed = {
                     url: entryUrl,
-                    color2: 0x7289D9,
-                    color: parseInt(entry.color, 16),
+                    color: parseInt('0x' + entry.color.replace('#', ''), 16),
                     image: { url: entry.preview },
                     author: { name: entry.title },
                     thumbnail: { url: entry.icon },

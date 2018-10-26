@@ -6,7 +6,7 @@ const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'stop',
+    Name: ['stop'],
     Description: 'Stop the currently playing track.',
     RequiredArguments: [],
     commandCallback: async function(message, bot) {

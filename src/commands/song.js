@@ -6,7 +6,7 @@ const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'song',
+    Name: ['song'],
     Description: 'Display information about the currently playing track.',
     RequiredArguments: [],
     commandCallback: async function(message, bot) {
@@ -24,9 +24,8 @@ let Command = {
     			        thumbnail: { url: videoInfo.thumbnailUrl },
     			        fields: [
     			            {
-    			                name: 'Song Name:',
+    			                name: '<:yt:505459222410952704>  **__Now Playing:__**',
     			                value: videoInfo.title,
-    			                inline: false
     			            },
     			            {
     			                name: 'Uploader:',
@@ -38,10 +37,7 @@ let Command = {
     			                value: videoInfo.datePublished,
     			                inline: true
     			            },
-			            ],
-			            author: {
-			                name: 'Now Playing'
-			            }
+			            ]
     			    };
     			    msg.edit({embed});
 			    });

@@ -44,7 +44,7 @@ function searchVideo(message, query) {
 }
 
 let Command = {
-    Name: 'play',
+    Name: ['play', 'p'],
     Description: 'Search & play a song from Spotify or YouTube.',
     RequiredArguments: ['Search Term / URL'],
     commandCallback: async function(message, bot) {
@@ -74,8 +74,11 @@ let Command = {
 			let trackApiUrl = 'http://api.cschaefer.me/spotify/?id=' + trackId;
 			let res = await fetch(trackApiUrl);
             let json = await res.json();
-		    query = json.name + ' - ' + json.artists[0].name;
-		    return searchVideo(message, query);
+            if(!json.error) {
+		    	query = json.name + ' - ' + json.artists[0].name;
+		    	return searchVideo(message, query);
+            }
+            return;
 		} else {
 		    // Just a raw search query..
 		    query = query.trim();

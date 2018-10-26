@@ -2,7 +2,7 @@ const settings = require('../../settings.json');
 const strings = require('../strings');
 
 let Command = {
-    Name: 'ban',
+    Name: ['ban'],
     Description: 'Ban a user from the Discord server.',
     RequiredArguments: ['User Mention'],
     commandCallback: function(message, bot) {

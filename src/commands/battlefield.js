@@ -1,9 +1,10 @@
 const settings = require('../../settings.json');
 const strings = require('../strings');
 const fetch = require('node-fetch');
+const util = require('util');
 
 let Command = {
-    Name: 'bf1',
+    Name: ['battlefield1', 'battlefield', 'bf1'],
     Description: 'Retrieve the Battlefield 1 stats of any player.',
     RequiredArguments: ['Platform', 'Player Name'],
     commandCallback: function(message, bot) {
@@ -19,7 +20,7 @@ let Command = {
                 let statsUrl = 'http://api.cschaefer.me/discord/tracker.php'.concat('?title=' + argv[0]).concat('&username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((data) => {
                     if (!data.successful) {
-                        msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "BF1STATS_NOT_FOUND"));
+                        msg.edit(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "BF1STATS_NOT_FOUND"), username));
                         return;
                     }
                     let fields = [];
@@ -51,6 +52,10 @@ let Command = {
                     let matchString = matchArr.join("\n");
                     
                     fields.push({
+                       name: '<:rank:505458257809113110>  '.concat(util.format(strings.GetString(settings.language, "BF1STATS_TITLE"), data.profile.displayName)),
+                       value: '\u200b'
+                    });
+                    fields.push({
                         name: '**__General Stats__**',
                         value: generalString,
                         inline: true
@@ -64,10 +69,6 @@ let Command = {
                     let embed = {
                         thumbnail: { url: data.result.rank.imageUrl.replace('[BB_PREFIX]', data.bbPrefix) },
                         color: 0xF17F1A,
-                        author: { 
-                            name: data.profile.displayName + ' - '.concat(strings.GetString(settings.language, "BF1STATS_TITLE"))
-                            
-                        },
                         fields: fields,
                         footer: {
                             text: settings.invite_url,

@@ -3,7 +3,7 @@ const strings = require('../strings');
 const translate = require('google-translate-api');
 
 let Command = {
-    Name: 'translate',
+    Name: ['translate'],
     Description: 'Translate a message from one language to another.',
     RequiredArguments: ['Language, Message'],
     commandCallback: function(message, bot) {

@@ -6,7 +6,7 @@ const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 
 let Command = {
-    Name: 'vkick',
+    Name: ['vkick'],
     Description: 'Kick a user from their voice channel.',
     RequiredArguments: ['User Mention'],
     commandCallback: async function(message, bot) {

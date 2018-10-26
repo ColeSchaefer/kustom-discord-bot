@@ -1,9 +1,10 @@
 const settings = require('../../settings.json');
 const strings = require('../strings');
 const fetch = require('node-fetch');
+const util = require('util');
 
 let Command = {
-    Name: 'bo4',
+    Name: ['blackops4', 'blackops', 'bo4'],
     Description: 'Retrieve the Black Ops 4 stats of any player.',
     RequiredArguments: ['Platform', 'Player Name'],
     commandCallback: function(message, bot) {
@@ -18,8 +19,8 @@ let Command = {
                 let username; username = args;
                 let statsUrl = 'http://api.cschaefer.me/discord/tracker.php'.concat('?title=' + argv[0]).concat('&username=' + username).concat('&platform=' + platform);
                 fetch(statsUrl).then((res) => res.json()).then((data) => {
-                    if (data.status == 'error') {
-                        msg.edit(message.guild.member(message.author) + ' → ' + strings.GetString(settings.language, "BO4STATS_NOT_FOUND"));
+                    if (data.status === 'error') {
+                        msg.edit(message.guild.member(message.author) + ' → ' + util.format(strings.GetString(settings.language, "BO4STATS_NOT_FOUND"), username));
                         return;
                     }
                     let fields = [];
@@ -61,7 +62,7 @@ let Command = {
                     matchKeys.forEach((key, index, array) => {
                         let fieldName = matchLabels[index];
                         let fieldData = data.stats[key];
-                        if(key == 'timeplayed') {
+                        if(key === 'timeplayed') {
                             var sec_num = parseInt(fieldData, 10); // don't forget the second param
                             var hours   = Math.floor(sec_num / 3600);
                             var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
@@ -76,7 +77,10 @@ let Command = {
                         matchString += field + "\n";
                     });
                     matchString += '**Win %:** ' + parseFloat(data.stats['wins'] / data.stats['losses']).toFixed(2);
-                    
+                    fields.push({
+                       name: '<:bo4:505269305055641607>  '.concat(util.format(strings.GetString(settings.language, "BO4STATS_TITLE"), userName)),
+                       value: '\u200b'
+                    });
                     fields.push({
                         name: '**__General Stats__**',
                         value: generalString,
@@ -89,11 +93,8 @@ let Command = {
                     });
                     
                     let embed = {
-                        thumbnail: { url: 'https://api.cschaefer.me/discord/misc/codbo4.png' },
+                        thumbnail: { url: 'https://api.cschaefer.me/discord/bo4ranks/' + data.stats['level'] + '.png' },
                         color: 0xFF6E03,
-                        author: {
-                            name: userName + ' - '.concat(strings.GetString(settings.language, "BO4STATS_TITLE"))
-                        },
                         fields: fields,
                         footer: {
                             text: settings.invite_url,

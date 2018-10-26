@@ -3,7 +3,7 @@ const strings = require('../strings');
 const fs = require('fs');
 
 let Command = {
-    Name: 'help',
+    Name: ['help'],
     Description: 'Provide a list of all of the bot\'s available commands.',
     RequiredArguments: [],
     commandCallback: function(message, bot) {
@@ -13,13 +13,20 @@ let Command = {
             
             files.forEach((module) => {
 			    let modulePath = './src/commands/'.concat(module);
-			    let isModule = !fs.statSync(modulePath).isDirectory();
-			    if (isModule) {
+			    if (!module.includes('disabled')) {
 			        let moduleReq = require('./'.concat(module));
             	    let argParam = moduleReq.RequiredArguments.length > 0 ? ' *<' + moduleReq.RequiredArguments.join(', ').trim() + '>*' : '';
+            	    
+            	    let aliases = '';
+            	    let aliasCount = moduleReq.Name.length - 1;
+            	    if(aliasCount > 0) {
+                	    for(let i = 1; i < aliasCount; i++) {
+                	        aliases += '**' + settings.prefix + moduleReq.Name[i] + '**, ';
+                	    } aliases += '**' + settings.prefix + moduleReq.Name[moduleReq.Name.length - 1] + '**';
+            	    }
         	    	let field = {
-                        name: '' + settings.prefix + moduleReq.Name + argParam,
-                        value: moduleReq.Description,
+                        name: '' + settings.prefix + moduleReq.Name[0] + argParam,
+                        value: moduleReq.Description + (aliases.length > 0 ? ' *(Aliases: ' + aliases.trim() + ')*' : ''),
                         inline: false
                     };
                     commandArray.push(field);
