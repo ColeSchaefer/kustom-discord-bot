@@ -1,7 +1,7 @@
 const ytinfo = require('youtube-info');
-const settings = require('../../settings.json');
-const strings = require('../strings');
-const audio = require('../audio');
+const settings = require('../../../settings.json');
+const strings = require('../../strings');
+const audio = require('../../audio');
 const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 

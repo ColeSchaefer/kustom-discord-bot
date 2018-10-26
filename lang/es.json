@@ -1,0 +1,41 @@
+{
+    "WELCOME_MESSAGE": "¡Bienvenido a la Discord de Kustom!",
+    
+    "USER_KICK_MESSAGE": "Usuario pateado.",
+    "USER_BAN_MESSAGE": "Usuario prohibido.",
+    
+    "HELP_COMMAND_LIST_MESSAGE": "Aquí hay una lista de mis comandos:",
+    "HELP_COMMAND_LIST_TITLE": "Lista de comandos",
+    
+    "PROPERTY_SET_NAME": "Nombre establecido en: %s",
+    "PROPERTY_SET_GAME": "Juego establecido en: %s",
+    "PROPERTY_SET_NICK": "Apodo establecido en: %s",
+    "PROPERTY_SET_STATUS": "Estado establecido en: %s",
+    "PROPERTY_INVALID": "Propiedad inválida proporcionada. Propiedades permitidas: [%s]",
+    
+    "APP_PLAYSTORE_LINK": "Enlace a Play Store",
+    "APP_AUTHOR": "Autor",
+    "APP_DESCRIPTION": "Descripción",
+    
+    "FNSTATS_TITLE": "Estadísticas fortnitas de %s",
+    "FNSTATS_NOT_FOUND": "No se encontraron estadísticas para el jugador '%s'",
+    "BO4STATS_TITLE": "Estadísticas de Black Ops 4 de %s",
+    "BO4STATS_NOT_FOUND": "No se encontraron estadísticas para el jugador '%s'",
+    "BF1STATS_TITLE": "Estadísticas de Battlefield 1 de %s",
+    "BF1STATS_NOT_FOUND": "No se encontraron estadísticas para el jugador '%s'",
+    
+    "USER_ALREADY_MUTED": "El usuario ya está silenciado.",
+    "USER_ALREADY_UNMUTED": "El usuario no está silenciado.",
+    "USER_CANNOT_MUTE_SELF": "No puedes silenciarte.",
+    "USER_CANNOT_MUTE_SAME_ROLE_OR_HIGHER": "No puedes silenciar a un miembro del mismo rol o superior.",
+    "USER_HAS_BEEN_MUTED": "El usuario ha sido silenciado.",
+    "USER_HAS_BEEN_UNMUTED": "El usuario ha sido desactivado.",
+    
+    "AUDIO_NOT_IN_VOICE_CHANNEL": "Debes estar en un canal de voz para usar este comando.",
+    "AUDIO_ADDED_TO_QUEUE": "¡Agregado a la cola!",
+    "AUDIO_STOPPED_TRACK": "¡Paró la reproducción!",
+    "AUDIO_SKIPPED_TRACK": "¡Pista saltada!",
+    "AUDIO_USER_VOICE_KICKED": "El usuario fue expulsado de la sala de voz.",
+    
+    "LANGUAGE_SET": "Idioma establecido en: **%s**"
+}

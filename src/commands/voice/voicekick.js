@@ -1,9 +1,5 @@
-const ytdl = require('ytdl-core');
-const settings = require('../../settings.json');
-const strings = require('../strings');
-const audio = require('../audio');
-const translate = require('google-translate-api');
-const fetch = require('node-fetch');
+const settings = require('../../../settings.json');
+const strings = require('../../strings');
 
 let Command = {
     Name: ['vkick'],

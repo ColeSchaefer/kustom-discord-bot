@@ -1,5 +1,5 @@
-const settings = require('../../settings.json');
-const strings = require('../strings.js');
+const settings = require('../../../settings.json');
+const strings = require('../../strings.js');
 const util = require('util');
 
 let Command = {

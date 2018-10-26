@@ -1,5 +1,5 @@
-const settings = require('../../settings.json');
-const strings = require('../strings');
+const settings = require('../../../settings.json');
+const strings = require('../../strings');
 const fetch = require('node-fetch');
 const util = require('util');
 

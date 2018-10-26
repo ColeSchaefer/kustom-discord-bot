@@ -1,7 +1,7 @@
 const ytdl = require('ytdl-core');
-const settings = require('../../settings.json');
-const strings = require('../strings');
-const audio = require('../audio');
+const settings = require('../../../settings.json');
+const strings = require('../../strings');
+const audio = require('../../audio');
 const translate = require('google-translate-api');
 const fetch = require('node-fetch');
 

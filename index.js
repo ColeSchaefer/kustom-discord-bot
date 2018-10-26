@@ -12,10 +12,11 @@ bot.on('ready', async (message) => {
     let link = await bot.generateInvite(['ADMINISTRATOR']);
     console.log('\r\nBot User: '.cyan + '%s', bot.user.tag);
     console.log('Bot Link: '.cyan + '%s', link);
+    console.log('Language: '.cyan + '%s', settings.language);
     
-    bot.emojis.forEach((e) => {
-    	console.log('<:' + e.name + ':' + e.id + '>');
-    });
+    // bot.emojis.forEach((e) => {
+    // 	console.log('<:' + e.name + ':' + e.id + '>');
+    // });
 });
 
 // New member joined!

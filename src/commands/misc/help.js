@@ -1,6 +1,6 @@
-const settings = require('../../settings.json');
-const strings = require('../strings');
-const fs = require('fs');
+const settings = require('../../../settings.json');
+const strings = require('../../strings');
+const recursive = require("recursive-readdir");
 
 let Command = {
     Name: ['help'],
@@ -8,13 +8,19 @@ let Command = {
     RequiredArguments: [],
     commandCallback: function(message, bot) {
         let commandArray = [];
-        fs.readdir('./src/commands/', (err, files) => {
-            if (err) throw (err);
+        recursive('./src/commands/', (err, files) => {
             
+            if (err) console.log(err);
             files.forEach((module) => {
-			    let modulePath = './src/commands/'.concat(module);
+			    let modulePath = './'.concat(module);
 			    if (!module.includes('disabled')) {
-			        let moduleReq = require('./'.concat(module));
+			        
+    			    let workingDirArr = __dirname.split('/');
+    			    let toRemove = workingDirArr[workingDirArr.length - 1];
+    			    let moduleName = module.replace(/src\/commands\//g, '');
+    			    let modulePath = __dirname.replace(toRemove, '').concat(moduleName);
+    			    
+			        let moduleReq = require(modulePath);
             	    let argParam = moduleReq.RequiredArguments.length > 0 ? ' *<' + moduleReq.RequiredArguments.join(', ').trim() + '>*' : '';
             	    
             	    let aliases = '';
